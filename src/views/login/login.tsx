@@ -1,4 +1,7 @@
+import {useNavigation} from '@react-navigation/core';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
+import {RootStackParamList} from '../../routes/stack.routes';
 import {ValidateEmail} from '../../utils/validate-email';
 import {
   LoginButton,
@@ -9,9 +12,12 @@ import {
   LoginView,
 } from './login.style';
 
-const Login = () => {
+type homeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+
+const Login: React.FC = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const {navigate} = useNavigation<homeScreenProp>();
 
   const handlerLogin = async () => {
     try {
@@ -38,7 +44,7 @@ const Login = () => {
           }),
         },
       );
-
+      navigate('Home');
       console.log('AQUI====>', response);
     } catch (error) {
       console.error(error);
