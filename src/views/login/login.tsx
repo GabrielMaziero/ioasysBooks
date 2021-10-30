@@ -1,4 +1,5 @@
 import React from 'react';
+import {ValidateEmail} from '../../utils/validate-email';
 import {
   LoginButton,
   LoginButtonText,
@@ -11,8 +12,18 @@ import {
 const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+
   const handlerLogin = async () => {
     try {
+      if (!email || !password) {
+        return;
+      }
+      const isValid = ValidateEmail(email);
+
+      if (!isValid) {
+        console.error('Email invalido');
+        return;
+      }
       const response = await fetch(
         'https://books.ioasys.com.br/api/v1/auth/sign-in',
         {
