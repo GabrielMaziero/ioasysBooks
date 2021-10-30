@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Login} from '../views/index';
-import Home from '../views/books/home';
+import Home from '../views/home/home';
 
 export type RootStackParamList = {
   Login: undefined;
