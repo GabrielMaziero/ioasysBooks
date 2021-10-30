@@ -1,8 +1,8 @@
 import React from 'react';
-import Login from './src/views/login/login';
+import {Routes} from './src/routes';
 
 const App = () => {
-  return <Login />;
+  return <Routes />;
 };
 
 export default App;
