@@ -7,6 +7,12 @@ export const BooksContainer = styled.SafeAreaView`
   align-items: center;
 `;
 
+export const BooksButtonLogOut = styled.TouchableOpacity`
+  justify-content: flex-end;
+`;
+
+export const BooksLogOut = styled.Image``;
+
 export const BooksCards = styled.TouchableOpacity`
   border-radius: 4px;
   height: 160px;

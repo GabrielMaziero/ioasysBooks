@@ -2,16 +2,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../model/navigation.models';
+import logOutButton from '../../assets/images/LogOut.png';
 import api from '../../services/api';
 import {
   BooksAuthors,
+  BooksButtonLogOut,
   BooksCards,
   BooksCardsInfos,
   BooksContainer,
   BooksImage,
   BooksImageView,
   BooksList,
+  BooksLogOut,
   BooksText,
   BooksTitle,
 } from './home.style';
@@ -68,6 +71,11 @@ const Home: React.FC = () => {
     );
   };
 
+  const logOut = async () => {
+    await AsyncStorage.removeItem('@FCAuth:token');
+    navigate('Login');
+  };
+
   React.useEffect(() => {
     getBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,6 +83,9 @@ const Home: React.FC = () => {
 
   return (
     <BooksContainer>
+      <BooksButtonLogOut onPress={logOut}>
+        <BooksLogOut source={logOutButton} />
+      </BooksButtonLogOut>
       <BooksList
         data={books}
         keyExtractor={book => String(book.id)}
