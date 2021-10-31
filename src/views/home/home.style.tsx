@@ -43,20 +43,26 @@ export const BooksTitle = styled.Text`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: #333333;
+  font-family: Heebo;
+  font-style: normal;
+  color: ${({theme}) => theme.colors.color_secondary};
 `;
 
 export const BooksAuthors = styled.Text`
   font-size: 12px;
   font-weight: normal;
+  font-family: Heebo;
+  font-style: normal;
   line-height: 20px;
-  color: #ab2680;
+  color: ${({theme}) => theme.colors.color_quatenary};
 `;
 
 export const BooksText = styled.Text`
   font-size: 12px;
   font-weight: normal;
+  font-family: Heebo;
+  font-style: normal;
   line-height: 20px;
-  color: #999999;
+  color: ${({theme}) => theme.colors.color_quinary};
   text-align: justify;
 `;

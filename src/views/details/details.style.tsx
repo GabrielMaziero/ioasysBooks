@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const DetailsContainer = styled.SafeAreaView`
-  background: #ffffff;
+  background: ${({theme}) => theme.colors.background_primary};
   flex: 1;
 `;
 
@@ -24,6 +24,8 @@ export const DetailsImage = styled.Image`
 `;
 
 export const DetailsTitle = styled.Text`
+  font-family: Heebo;
+  font-style: normal;
   font-weight: 500;
   font-size: 28px;
   line-height: 40px;
@@ -31,18 +33,20 @@ export const DetailsTitle = styled.Text`
 `;
 
 export const DetailsAuthors = styled.Text`
+  font-family: Heebo;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 20px;
-  color: #ab2680;
+  color: ${({theme}) => theme.colors.color_quatenary};
 `;
 
 export const DetailsDescription = styled.Text`
+  font-family: Heebo;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 28.5px;
-  color: #333333;
+  color: ${({theme}) => theme.colors.color_secondary};
   text-align: left;
 `;

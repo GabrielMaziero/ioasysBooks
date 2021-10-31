@@ -1,25 +1,48 @@
 import styled from 'styled-components/native';
 
 export const LoginContainer = styled.ImageBackground`
-  background: #ffffff;
+  background: ${({theme}) => theme.colors.background_primary};
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
 export const LoginView = styled.View`
-  width: 288px;
+  width: 100%;
   height: 224px;
+  padding-left: 17px;
+  padding-right: 17px;
+`;
+
+export const LoginHeader = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 25px;
+`;
+
+export const LoginLogo = styled.Image``;
+
+export const LoginForm = styled.View`
+  justify-content: center;
+`;
+
+export const LoginTitle = styled.Text`
+  margin-left: 16.6px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 40px;
+  color: ${({theme}) => theme.colors.color_primary};
 `;
 
 export const LoginInput = styled.TextInput`
-  width: 288px;
+  width: 100%;
   height: 60px;
   padding-left: 10px;
   padding-top: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.32);
-  /* backdrop-filter: blur(2px); */
+  color: ${({theme}) => theme.colors.color_primary};
+  background: ${({theme}) => theme.colors.background_tertiary};
   border-radius: 4px;
   font-family: Heebo;
   font-style: normal;
@@ -29,28 +52,24 @@ export const LoginInput = styled.TextInput`
 `;
 
 export const LoginInputLabel = styled.Text`
-  width: 259px;
-  height: 16px;
   top: 20px;
-  left: 10px;
-
   font-family: Heebo;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  /* identical to box height, or 133% */
-  color: white;
+  color: ${({theme}) => theme.colors.color_primary};
   opacity: 0.5;
+  padding-left: 10px;
 `;
 
 export const LoginButton = styled.TouchableOpacity`
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.color_primary};
   border-radius: 44px;
   width: 85px;
   height: 36px;
   position: absolute;
-  left: 180px;
+  left: 240px;
   top: 104px;
   align-items: center;
   justify-content: center;
@@ -61,6 +80,6 @@ export const LoginButtonText = styled.Text`
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: #b22e6f;
+  color: ${({theme}) => theme.colors.color_tertiary};
   font-family: Heebo;
 `;

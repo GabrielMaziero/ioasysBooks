@@ -9,8 +9,6 @@ export default {
     color_quatenary: '#AB2680',
     color_quinary: '#999999',
     color_neutro: '#000',
-    color_attention: '#D93D3D',
-    color_success: '#699F10',
   },
   fonts: {
     heebo_bold: 'Heebo-Bold',

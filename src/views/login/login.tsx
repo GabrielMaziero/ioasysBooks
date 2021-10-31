@@ -6,12 +6,17 @@ import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import {ValidateEmail} from '../../utils/validate-email';
 import background from '../../assets/images/bg.png';
+import logo from '../../assets/images/Logo.png';
 import {
   LoginButton,
   LoginButtonText,
   LoginContainer,
+  LoginForm,
+  LoginHeader,
   LoginInput,
   LoginInputLabel,
+  LoginLogo,
+  LoginTitle,
   LoginView,
 } from './login.style';
 
@@ -46,21 +51,27 @@ const Login: React.FC = () => {
   return (
     <LoginContainer source={background}>
       <LoginView>
-        <LoginInputLabel>Email</LoginInputLabel>
-        <LoginInput
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize="none"
-        />
-        <LoginInputLabel>Senha</LoginInputLabel>
-        <LoginInput
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <LoginButton onPress={handlerLogin}>
-          <LoginButtonText>Entrar</LoginButtonText>
-        </LoginButton>
+        <LoginHeader>
+          <LoginLogo source={logo} />
+          <LoginTitle>Books</LoginTitle>
+        </LoginHeader>
+        <LoginForm>
+          <LoginInputLabel>Email</LoginInputLabel>
+          <LoginInput
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+          />
+          <LoginInputLabel>Senha</LoginInputLabel>
+          <LoginInput
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <LoginButton onPress={handlerLogin}>
+            <LoginButtonText>Entrar</LoginButtonText>
+          </LoginButton>
+        </LoginForm>
       </LoginView>
     </LoginContainer>
   );
