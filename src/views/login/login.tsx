@@ -4,6 +4,7 @@ import React from 'react';
 import {RootStackParamList} from '../../routes/stack.routes';
 import api from '../../services/api';
 import {ValidateEmail} from '../../utils/validate-email';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   LoginButton,
   LoginButtonText,
@@ -16,8 +17,8 @@ import {
 type homeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
 const Login: React.FC = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
   const {navigate} = useNavigation<homeScreenProp>();
 
   const handlerLogin = async () => {
@@ -35,8 +36,8 @@ const Login: React.FC = () => {
         email: email,
         password: password,
       });
+      AsyncStorage.setItem('@FCAuth:token', response.headers.authorization);
       navigate('Home');
-      console.log('AQUI====>', response);
     } catch (error) {
       console.error(error);
     }
