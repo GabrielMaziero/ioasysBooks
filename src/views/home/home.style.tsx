@@ -7,7 +7,7 @@ export const BooksContainer = styled.SafeAreaView`
   align-items: center;
 `;
 
-export const BooksCards = styled.View`
+export const BooksCards = styled.TouchableOpacity`
   border-radius: 4px;
   height: 160px;
   background-color: white;

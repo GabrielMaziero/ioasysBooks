@@ -1,4 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/core';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
+import {RootStackParamList} from '../../routes/stack.routes';
+import api from '../../services/api';
 import {
   BooksAuthors,
   BooksCards,
@@ -10,13 +15,14 @@ import {
   BooksText,
   BooksTitle,
 } from './home.style';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import api from '../../services/api';
+
+type homeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
 
 const Home: React.FC = () => {
   const [page, setPage] = React.useState<number>(1);
   const [books, setBooks] = React.useState<any>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
+  const {navigate} = useNavigation<homeScreenProp>();
 
   const getBooks = async () => {
     try {
@@ -39,13 +45,13 @@ const Home: React.FC = () => {
       console.log(error);
     }
   };
-  React.useEffect(() => {
-    getBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+  const navigateToDetails = (book: any) => {
+    navigate('Details', book);
+  };
   const renderItem = ({item}: any) => {
     return (
-      <BooksCards>
+      <BooksCards onPress={() => navigateToDetails(item.id)}>
         <BooksImageView>
           <BooksImage source={{uri: item.imageUrl}} resizeMode="contain" />
         </BooksImageView>
@@ -61,6 +67,11 @@ const Home: React.FC = () => {
       </BooksCards>
     );
   };
+
+  React.useEffect(() => {
+    getBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <BooksContainer>
