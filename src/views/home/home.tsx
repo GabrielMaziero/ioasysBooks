@@ -1,9 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import {RootStackParamList} from '../../model/navigation.models';
 import logOutButton from '../../assets/images/LogOut.png';
+import Context from '../../contexts/context';
+import {Book} from '../../model/book.models';
+import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import {
   BooksAuthors,
@@ -23,9 +24,10 @@ type homeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
 
 const Home: React.FC = () => {
   const [page, setPage] = React.useState<number>(1);
-  const [books, setBooks] = React.useState<any>([]);
+  const [books, setBooks] = React.useState<Book[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const {navigate} = useNavigation<homeScreenProp>();
+  const {token, signOut} = React.useContext(Context);
 
   const getBooks = async () => {
     try {
@@ -34,7 +36,6 @@ const Home: React.FC = () => {
       }
 
       setLoading(true);
-      const token = await AsyncStorage.getItem('@FCAuth:token');
       const response = await api.get('/books', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -72,8 +73,7 @@ const Home: React.FC = () => {
   };
 
   const logOut = async () => {
-    await AsyncStorage.removeItem('@FCAuth:token');
-    navigate('Login');
+    signOut();
   };
 
   React.useEffect(() => {
