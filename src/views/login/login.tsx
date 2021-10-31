@@ -5,6 +5,7 @@ import React from 'react';
 import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import {ValidateEmail} from '../../utils/validate-email';
+import background from '../../assets/images/bg.png';
 import {
   LoginButton,
   LoginButtonText,
@@ -43,7 +44,7 @@ const Login: React.FC = () => {
     }
   };
   return (
-    <LoginContainer>
+    <LoginContainer source={background}>
       <LoginView>
         <LoginInputLabel>Email</LoginInputLabel>
         <LoginInput

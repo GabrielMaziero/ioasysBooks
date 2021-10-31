@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const LoginContainer = styled.SafeAreaView`
+export const LoginContainer = styled.ImageBackground`
   background: #ffffff;
   flex: 1;
   justify-content: center;
@@ -35,7 +35,7 @@ export const LoginInputLabel = styled.Text`
   font-size: 12px;
   line-height: 16px;
   /* identical to box height, or 133% */
-  color: black;
+  color: white;
   opacity: 0.5;
 `;
 
