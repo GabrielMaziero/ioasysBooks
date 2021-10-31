@@ -1,10 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import {ValidateEmail} from '../../utils/validate-email';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   LoginButton,
   LoginButtonText,

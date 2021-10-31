@@ -1,11 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Login, Home, Details} from '../views/index';
-export type RootStackParamList = {
-  Login: undefined;
-  Home: undefined;
-  Details: undefined;
-};
 
 const Stack = createNativeStackNavigator();
 

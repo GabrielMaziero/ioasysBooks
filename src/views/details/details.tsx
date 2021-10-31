@@ -4,7 +4,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import backArrow from '../../assets/images/backArrow.png';
 import {Book} from '../../model/book.models';
-import {RootStackParamList} from '../../routes/stack.routes';
+import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import {
   DetailsAuthors,
@@ -52,7 +52,7 @@ const Details: React.FC = () => {
         <DetailsImage source={{uri: book?.imageUrl}} />
         <DetailsTitle>{book?.title}</DetailsTitle>
         <DetailsAuthors>
-          {book?.authors.map(author => `${author} `)}
+          {book?.authors.map(author => `${author}, `)}
         </DetailsAuthors>
         <DetailsDescription>INFORMAÇÕES</DetailsDescription>
       </DetailsContent>
