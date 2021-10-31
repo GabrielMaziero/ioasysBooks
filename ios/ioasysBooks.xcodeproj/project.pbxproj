@@ -14,6 +14,11 @@
 		6172F2D35A4C3AA820D92908 /* libPods-ioasysBooks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-ioasysBooks.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-ioasysBooks-ioasysBooksTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-ioasysBooks-ioasysBooksTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		7F55291E15404A7F86DBB721 /* Heebo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5812B5D707A842FEACF29E47 /* Heebo-Bold.ttf */; };
+		1049D29756C64D4E86B47794 /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14DBD541168C4A1BB2008477 /* Heebo-Light.ttf */; };
+		84E3799B4D684498B90D241C /* Heebo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A70FB4D95614E7391B0C949 /* Heebo-Medium.ttf */; };
+		6C2EBA90B82441B78F4F9C94 /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FA26F89957A4FAD9372EC5A /* Heebo-Regular.ttf */; };
+		F8DB8FB8DE294AFB9ED73A0D /* Heebo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8531260D81664DB1AE1CD23B /* Heebo-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-ioasysBooks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioasysBooks.debug.xcconfig"; path = "Target Support Files/Pods-ioasysBooks/Pods-ioasysBooks.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-ioasysBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioasysBooks.release.xcconfig"; path = "Target Support Files/Pods-ioasysBooks/Pods-ioasysBooks.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		5812B5D707A842FEACF29E47 /* Heebo-Bold.ttf */ = {isa = PBXFileReference; name = "Heebo-Bold.ttf"; path = "../assets/fonts/Heebo-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14DBD541168C4A1BB2008477 /* Heebo-Light.ttf */ = {isa = PBXFileReference; name = "Heebo-Light.ttf"; path = "../assets/fonts/Heebo-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8A70FB4D95614E7391B0C949 /* Heebo-Medium.ttf */ = {isa = PBXFileReference; name = "Heebo-Medium.ttf"; path = "../assets/fonts/Heebo-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5FA26F89957A4FAD9372EC5A /* Heebo-Regular.ttf */ = {isa = PBXFileReference; name = "Heebo-Regular.ttf"; path = "../assets/fonts/Heebo-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8531260D81664DB1AE1CD23B /* Heebo-SemiBold.ttf */ = {isa = PBXFileReference; name = "Heebo-SemiBold.ttf"; path = "../assets/fonts/Heebo-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				7F6332B2B6974D6992D57281 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -148,6 +159,19 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		7F6332B2B6974D6992D57281 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				5812B5D707A842FEACF29E47 /* Heebo-Bold.ttf */,
+				14DBD541168C4A1BB2008477 /* Heebo-Light.ttf */,
+				8A70FB4D95614E7391B0C949 /* Heebo-Medium.ttf */,
+				5FA26F89957A4FAD9372EC5A /* Heebo-Regular.ttf */,
+				8531260D81664DB1AE1CD23B /* Heebo-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +269,11 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				7F55291E15404A7F86DBB721 /* Heebo-Bold.ttf in Resources */,
+				1049D29756C64D4E86B47794 /* Heebo-Light.ttf in Resources */,
+				84E3799B4D684498B90D241C /* Heebo-Medium.ttf in Resources */,
+				6C2EBA90B82441B78F4F9C94 /* Heebo-Regular.ttf in Resources */,
+				F8DB8FB8DE294AFB9ED73A0D /* Heebo-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

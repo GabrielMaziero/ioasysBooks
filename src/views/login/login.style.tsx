@@ -21,6 +21,11 @@ export const LoginInput = styled.TextInput`
   background: rgba(0, 0, 0, 0.32);
   /* backdrop-filter: blur(2px); */
   border-radius: 4px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
 `;
 
 export const LoginInputLabel = styled.Text`
@@ -29,7 +34,7 @@ export const LoginInputLabel = styled.Text`
   top: 20px;
   left: 10px;
 
-  /* font-family: Heebo; */
+  font-family: Heebo;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -57,4 +62,5 @@ export const LoginButtonText = styled.Text`
   font-size: 16px;
   line-height: 20px;
   color: #b22e6f;
+  font-family: Heebo;
 `;
