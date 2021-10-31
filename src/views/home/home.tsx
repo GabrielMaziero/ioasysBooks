@@ -6,44 +6,72 @@ import {
   BooksContainer,
   BooksImage,
   BooksImageView,
+  BooksList,
   BooksText,
   BooksTitle,
 } from './home.style';
-// import data from './data';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from '../../services/api';
 
 const Home: React.FC = () => {
-  const data = {
-    authors: ['Roberta Saraiva', 'Bruna Macedo'],
-    title: 'Aspernatur',
-    description:
-      'Molestiae adipisci asperiores. Incidunt natus nulla. Fuga ab et esse dolorum eum ipsam consequatur.\n \rIn ullam quia ullam tempore adipisci nam. Id mollitia fugiat eaque omnis nihil distinctio exercitationem ex. Minima quo consequatur recusandae consequuntur tempora nihil eaque. Rerum occaecati nisi eum excepturi mollitia.',
-    pageCount: 1197,
-    category: 'Comportamento',
-    imageUrl: 'https://files-books.ioasys.com.br/Book-6.jpg',
-    language: 'Português',
-    isbn10: '8451010563',
-    isbn13: '749-8451010563',
-    publisher: 'Carvalho, Saraiva and Moraes',
-    published: 2020,
-    id: '60171639faf5de22b804a15a',
+  const [page, setPage] = React.useState<number>(1);
+  const [books, setBooks] = React.useState<any>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const getBooks = async () => {
+    try {
+      if (loading) {
+        return;
+      }
+
+      setLoading(true);
+      const token = await AsyncStorage.getItem('@FCAuth:token');
+      const response = await api.get('/books', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {page},
+      });
+      setPage(page + 1);
+      setLoading(false);
+      setBooks([...books, ...response.data.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  React.useEffect(() => {
+    getBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const renderItem = ({item}: any) => {
+    return (
+      <BooksCards>
+        <BooksImageView>
+          <BooksImage source={{uri: item.imageUrl}} resizeMode="contain" />
+        </BooksImageView>
+        <BooksCardsInfos>
+          <BooksTitle>{item.title}</BooksTitle>
+          {item.authors?.map((author: string) => (
+            <BooksAuthors key={author}>{author}</BooksAuthors>
+          ))}
+          <BooksText>{`${item.pageCount} páginas`}</BooksText>
+          <BooksText>{`Editora ${item.publisher}`}</BooksText>
+          <BooksText>{`Publicado em ${item.published}`}</BooksText>
+        </BooksCardsInfos>
+      </BooksCards>
+    );
   };
 
   return (
     <BooksContainer>
-      <BooksCards>
-        <BooksImageView>
-          <BooksImage source={{uri: data.imageUrl}} resizeMode="contain" />
-        </BooksImageView>
-        <BooksCardsInfos>
-          <BooksTitle>{data.title}</BooksTitle>
-          {data.authors.map(author => (
-            <BooksAuthors key={author}>{author}</BooksAuthors>
-          ))}
-          <BooksText>{data.pageCount}</BooksText>
-          <BooksText>{data.publisher}</BooksText>
-          <BooksText>{data.published}</BooksText>
-        </BooksCardsInfos>
-      </BooksCards>
+      <BooksList
+        data={books}
+        keyExtractor={book => String(book.id)}
+        showsVerticalScrollIndicator={false}
+        onEndReached={() => getBooks()}
+        onEndReachedThreshold={0.2}
+        renderItem={renderItem}
+      />
     </BooksContainer>
   );
 };

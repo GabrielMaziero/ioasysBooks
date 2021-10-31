@@ -1,19 +1,23 @@
+import {FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
-export const BooksContainer = styled.View`
-  background-color: #ffe3c8;
+export const BooksContainer = styled.SafeAreaView`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
 export const BooksCards = styled.View`
-  width: 288px;
   border-radius: 4px;
   height: 160px;
   background-color: white;
   flex-direction: row;
   box-shadow: 0px 6px 24px rgba(84, 16, 95, 0.13);
+  margin: 0 20px 10px 20px;
+`;
+
+export const BooksList = styled(FlatList as new () => FlatList<any>)`
+  width: 100%;
 `;
 
 export const BooksCardsInfos = styled.View`
@@ -48,4 +52,5 @@ export const BooksText = styled.Text`
   font-weight: normal;
   line-height: 20px;
   color: #999999;
+  text-align: justify;
 `;
