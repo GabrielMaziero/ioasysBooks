@@ -2,20 +2,28 @@ import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import logOutButton from '../../assets/images/LogOut.png';
+import logo from '../../assets/images/logoBlack.png';
 import Context from '../../contexts/context';
 import {Book} from '../../model/book.models';
 import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
+import background from '../../assets/images/backgroundHome.png';
 import {
   BooksAuthors,
   BooksButtonLogOut,
   BooksCards,
   BooksCardsInfos,
   BooksContainer,
+  BooksHeader,
+  BooksHeaderTitle,
   BooksImage,
+  BooksImageBackground,
   BooksImageView,
   BooksList,
+  BooksLogo,
+  BooksLogoTitle,
   BooksLogOut,
+  BooksSearchInput,
   BooksText,
   BooksTitle,
 } from './home.style';
@@ -82,19 +90,28 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <BooksContainer>
-      <BooksButtonLogOut onPress={logOut}>
-        <BooksLogOut source={logOutButton} />
-      </BooksButtonLogOut>
-      <BooksList
-        data={books}
-        keyExtractor={book => String(book.id)}
-        showsVerticalScrollIndicator={false}
-        onEndReached={() => getBooks()}
-        onEndReachedThreshold={0.2}
-        renderItem={renderItem}
-      />
-    </BooksContainer>
+    <BooksImageBackground source={background}>
+      <BooksContainer>
+        <BooksHeader>
+          <BooksLogoTitle>
+            <BooksLogo source={logo} />
+            <BooksHeaderTitle>Books</BooksHeaderTitle>
+          </BooksLogoTitle>
+          <BooksButtonLogOut onPress={logOut}>
+            <BooksLogOut source={logOutButton} />
+          </BooksButtonLogOut>
+        </BooksHeader>
+        <BooksSearchInput placeholder="Procure um livro" />
+        <BooksList
+          data={books}
+          keyExtractor={book => String(book.id)}
+          showsVerticalScrollIndicator={false}
+          onEndReached={() => getBooks()}
+          onEndReachedThreshold={0.2}
+          renderItem={renderItem}
+        />
+      </BooksContainer>
+    </BooksImageBackground>
   );
 };
 

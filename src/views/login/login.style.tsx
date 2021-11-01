@@ -36,7 +36,9 @@ export const LoginTitle = styled.Text`
   color: ${({theme}) => theme.colors.color_primary};
 `;
 
-export const LoginInput = styled.TextInput`
+export const LoginInput = styled.TextInput.attrs(props => ({
+  selectionColor: '#FFFFFF' || props.selectionColor,
+}))`
   width: 100%;
   height: 60px;
   padding-left: 10px;

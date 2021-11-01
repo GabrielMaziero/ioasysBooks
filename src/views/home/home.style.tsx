@@ -1,17 +1,51 @@
 import {FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
+export const BooksImageBackground = styled.ImageBackground`
+  flex: 1;
+`;
 export const BooksContainer = styled.SafeAreaView`
   flex: 1;
-  justify-content: center;
   align-items: center;
 `;
 
-export const BooksButtonLogOut = styled.TouchableOpacity`
-  justify-content: flex-end;
+export const BooksHeader = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px 30px 20px;
 `;
 
+export const BooksLogoTitle = styled.View`
+  flex-direction: row;
+`;
+
+export const BooksLogo = styled.Image``;
+
+export const BooksHeaderTitle = styled.Text`
+  margin-left: 16.6px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 40px;
+  color: ${({theme}) => theme.colors.color_secondary};
+`;
+
+export const BooksButtonLogOut = styled.TouchableOpacity``;
+
 export const BooksLogOut = styled.Image``;
+
+export const BooksSearchInput = styled.TextInput.attrs(props => ({
+  selectionColor: '#333333' || props.selectionColor,
+}))`
+  width: 246px;
+  height: 48px;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  border-radius: 2px;
+  padding-left: 10px;
+`;
 
 export const BooksCards = styled.TouchableOpacity`
   border-radius: 4px;
