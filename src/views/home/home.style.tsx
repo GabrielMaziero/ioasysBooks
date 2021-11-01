@@ -37,6 +37,14 @@ export const BooksButtonLogOut = styled.TouchableOpacity``;
 
 export const BooksLogOut = styled.Image``;
 
+export const BooksSearchFilter = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px 30px 20px;
+`;
+
 export const BooksSearchInput = styled.TextInput.attrs(props => ({
   selectionColor: '#333333' || props.selectionColor,
 }))`
@@ -46,6 +54,14 @@ export const BooksSearchInput = styled.TextInput.attrs(props => ({
   border-radius: 2px;
   padding-left: 10px;
 `;
+
+export const BooksSearchIcon = styled.Image`
+  position: absolute;
+  left: 220px;
+  top: 15px;
+`;
+
+export const BooksFilter = styled.Image``;
 
 export const BooksCards = styled.TouchableOpacity`
   border-radius: 4px;

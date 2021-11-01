@@ -3,6 +3,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import logOutButton from '../../assets/images/LogOut.png';
 import logo from '../../assets/images/logoBlack.png';
+import iconSearch from '../../assets/images/iconSearch.png';
+import iconFilter from '../../assets/images/filter.png';
 import Context from '../../contexts/context';
 import {Book} from '../../model/book.models';
 import {RootStackParamList} from '../../model/navigation.models';
@@ -14,6 +16,7 @@ import {
   BooksCards,
   BooksCardsInfos,
   BooksContainer,
+  BooksFilter,
   BooksHeader,
   BooksHeaderTitle,
   BooksImage,
@@ -23,6 +26,8 @@ import {
   BooksLogo,
   BooksLogoTitle,
   BooksLogOut,
+  BooksSearchFilter,
+  BooksSearchIcon,
   BooksSearchInput,
   BooksText,
   BooksTitle,
@@ -101,7 +106,11 @@ const Home: React.FC = () => {
             <BooksLogOut source={logOutButton} />
           </BooksButtonLogOut>
         </BooksHeader>
-        <BooksSearchInput placeholder="Procure um livro" />
+        <BooksSearchFilter>
+          <BooksSearchInput placeholder="Procure um livro" />
+          <BooksSearchIcon source={iconSearch} />
+          <BooksFilter source={iconFilter} />
+        </BooksSearchFilter>
         <BooksList
           data={books}
           keyExtractor={book => String(book.id)}
