@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/core';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AxiosError} from 'axios';
 import React from 'react';
 import background from '../../assets/images/backgroundHome.png';
 import iconFilter from '../../assets/images/filter.png';
@@ -12,22 +13,7 @@ import {RootStackParamList} from '../../model/navigation.models';
 import api from '../../services/api';
 import ListBooks from './components/list-books';
 import ModalFilter from './components/modal-filter';
-import {
-  BooksButtonLogOut,
-  BooksContainer,
-  BooksFilter,
-  BooksFilterButton,
-  BooksHeader,
-  BooksHeaderTitle,
-  BooksImageBackground,
-  BooksList,
-  BooksLogo,
-  BooksLogoTitle,
-  BooksLogOut,
-  BooksSearchFilter,
-  BooksSearchIcon,
-  BooksSearchInput,
-} from './home.style';
+import * as HM from './home.style';
 
 type homeScreenProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
 
@@ -42,26 +28,32 @@ const Home: React.FC = () => {
   const {token, signOut} = React.useContext(Context);
 
   const getBooks = async () => {
-    try {
-      if (loading) {
-        return;
-      }
+    if (loading) {
+      return;
+    }
 
-      setLoading(true);
-      const response = await api.get('/books', {
+    setLoading(true);
+    api
+      .get('/books', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
         params: {page},
+      })
+      .then(response => {
+        setPage(page + 1);
+        setLoading(false);
+        const newDate = filterBooks([...response.data.data], searchValue);
+        setBooks([...books, ...response.data.data]);
+        setBooksFiltred([...booksFiltred, ...newDate]);
+      })
+      .catch((error: AxiosError) => {
+        if (error.response?.status === 401) {
+          console.log(error.response.status);
+        } else {
+          console.log(error);
+        }
       });
-      setPage(page + 1);
-      setLoading(false);
-      const newDate = filterBooks([...response.data.data], searchValue);
-      setBooks([...books, ...response.data.data]);
-      setBooksFiltred([...booksFiltred, ...newDate]);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const navigateToDetails = (book: any) => {
@@ -104,30 +96,30 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <ModalFilter showModal={showModal} />
-      <BooksImageBackground source={background}>
-        <BooksContainer>
-          <BooksHeader>
-            <BooksLogoTitle>
-              <BooksLogo source={logo} />
-              <BooksHeaderTitle>Books</BooksHeaderTitle>
-            </BooksLogoTitle>
-            <BooksButtonLogOut onPress={logOut}>
-              <BooksLogOut source={logOutButton} />
-            </BooksButtonLogOut>
-          </BooksHeader>
-          <BooksSearchFilter>
-            <BooksSearchInput
+      {showModal && <ModalFilter showModal={HandlerFilter} />}
+      <HM.BooksImageBackground source={background}>
+        <HM.BooksContainer>
+          <HM.BooksHeader>
+            <HM.BooksLogoTitle>
+              <HM.BooksLogo source={logo} />
+              <HM.BooksHeaderTitle>Books</HM.BooksHeaderTitle>
+            </HM.BooksLogoTitle>
+            <HM.BooksButtonLogOut onPress={logOut}>
+              <HM.BooksLogOut source={logOutButton} />
+            </HM.BooksButtonLogOut>
+          </HM.BooksHeader>
+          <HM.BooksSearchFilter>
+            <HM.BooksSearchInput
               value={searchValue}
               onChangeText={e => handlerSearch(e)}
               placeholder="Procure um livro"
             />
-            <BooksSearchIcon source={iconSearch} />
-            <BooksFilterButton onPress={HandlerFilter}>
-              <BooksFilter source={iconFilter} />
-            </BooksFilterButton>
-          </BooksSearchFilter>
-          <BooksList
+            <HM.BooksSearchIcon source={iconSearch} />
+            <HM.BooksFilterButton onPress={HandlerFilter}>
+              <HM.BooksFilter source={iconFilter} />
+            </HM.BooksFilterButton>
+          </HM.BooksSearchFilter>
+          <HM.BooksList
             data={booksFiltred}
             keyExtractor={book => String(book.id)}
             showsVerticalScrollIndicator={false}
@@ -135,8 +127,8 @@ const Home: React.FC = () => {
             onEndReachedThreshold={0.2}
             renderItem={renderItem}
           />
-        </BooksContainer>
-      </BooksImageBackground>
+        </HM.BooksContainer>
+      </HM.BooksImageBackground>
     </>
   );
 };
